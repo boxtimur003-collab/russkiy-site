@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Мой первый сайт</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Русский язык — Тренажёр вставки букв</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Привет, мир!</h1>
-    <p>Это мой сайт, загруженный через GitHub.</p>
+
+<div class="bubbles" id="bubbles"></div>
+
+<div class="container">
+
+  <!-- МЕНЮ -->
+  <div class="screen active" id="menuScreen">
+    <h1>Русский язык</h1>
+    <p class="subtitle">Тренажёр вставки пропущенных букв</p>
+    <div class="menu-grid" id="menuGrid">
+      <!-- Кнопки будут создаваться через JS из words.js -->
+    </div>
+  </div>
+
+  <!-- ТРЕНАЖЁР -->
+  <div class="screen" id="gameScreen">
+    <div class="top-bar">
+      <button class="back-btn" onclick="backToMenu()">← В меню</button>
+      <div class="stats">
+        <span>Вопрос: <b id="statQ">1</b>/<b id="statTotal">10</b></span>
+        <span>Правильно: <b id="statCorrect">0</b></span>
+        <span class="timer" id="timerBox" style="display:none">⏱ <b id="statTimer">60</b>с</span>
+      </div>
+    </div>
+
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div class="card">
+      <div class="word" id="wordDisplay">с_бака</div>
+      <div class="hint" id="hintBox"></div>
+      <div class="options" id="optionsBox"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Далее →</button>
+    </div>
+  </div>
+
+  <!-- РЕЗУЛЬТАТ -->
+  <div class="screen" id="resultScreen">
+    <h2 class="result-title" id="resultTitle">Отлично!</h2>
+    <p class="subtitle" id="resultSubtitle">Тренировка завершена</p>
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="num" id="resCorrect">0</div>
+        <div class="lbl">Правильно</div>
+      </div>
+      <div class="result-item">
+        <div class="num" id="resWrong">0</div>
+        <div class="lbl">Ошибок</div>
+      </div>
+      <div class="result-item">
+        <div class="num" id="resPercent">0%</div>
+        <div class="lbl">Точность</div>
+      </div>
+    </div>
+    <div class="result-actions">
+      <button class="action-btn primary" onclick="restart()">Ещё раз</button>
+      <button class="action-btn" onclick="backToMenu()">В меню</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="words.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
